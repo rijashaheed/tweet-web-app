@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
+import firebase from "firebase";
 import "./Pages.css";
 import {
 	Button,
@@ -11,7 +12,7 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
-import { auth } from "../firebase.js";
+import { auth, storage, database } from "../firebase.js";
 
 function SignUp() {
 	const [email, setEmail] = useState("");
@@ -20,7 +21,33 @@ function SignUp() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [fullname, setFullname] = useState("");
 	const [contact, setContact] = useState("");
-	const [profilePic, setProfilePic] = useState("");
+	const [profilePic, setProfilePic] = useState(null);
+	var picUrl;
+
+	const uploadPic = (e) => {
+		const file = e.target.files[0];
+		const storageRef = storage.ref();
+		const fileRef = storageRef.child(file.name);
+		const uploadedPic = fileRef.put(file);
+		uploadedPic.on(
+			"state_changed",
+			function (snapshot) {
+				console.log(
+					"progress",
+					(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				);
+			},
+			function (error) {
+				console.log("");
+			},
+			function () {
+				uploadedPic.snapshot.ref.getDownloadURL().then(function (url) {
+					console.log(url);
+					picUrl = url; //how to use variable inside firebase or setsth() or ab url ko function k bahar lakr kese sign up button pr pura user ka data bhejna ha ye sort out krna ha
+				});
+			}
+		);
+	};
 
 	const signUp = (e) => {
 		e.preventDefault();
@@ -120,7 +147,7 @@ function SignUp() {
 										name="file"
 										id="exampleFile"
 										value={profilePic}
-										onChange={(e) => setProfilePic(e.target.value)}
+										onChange={uploadPic}
 									/>
 									<FormText color="muted">Upload your profile picture here</FormText>
 								</FormGroup>

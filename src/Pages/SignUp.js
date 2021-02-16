@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
-import firebase from "firebase";
+// import firebase from "firebase";
 import "./Pages.css";
 import {
 	Button,
@@ -12,7 +12,7 @@ import {
 	Row,
 	Col,
 } from "reactstrap";
-import { auth, storage, database } from "../firebase.js";
+import { auth, storage, db } from "../firebase.js";
 
 function SignUp() {
 	const [email, setEmail] = useState("");
@@ -21,14 +21,16 @@ function SignUp() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [fullname, setFullname] = useState("");
 	const [contact, setContact] = useState("");
-	const [profilePic, setProfilePic] = useState(null);
-	var picUrl;
+	// const [profilePic, setProfilePic] = useState(null);
+	// var picUrl;
 
-	const uploadPic = (e) => {
+	const uploadPic = async (e) => {
 		const file = e.target.files[0];
-		const storageRef = storage.ref();
+		const storageRef = storage.ref("profilePics/");
 		const fileRef = storageRef.child(file.name);
 		const uploadedPic = fileRef.put(file);
+		// setProfilePic(await fileRef.getDownloadURL());
+		// console.log(profilePic);
 		uploadedPic.on(
 			"state_changed",
 			function (snapshot) {
@@ -43,19 +45,39 @@ function SignUp() {
 			function () {
 				uploadedPic.snapshot.ref.getDownloadURL().then(function (url) {
 					console.log(url);
-					picUrl = url; //how to use variable inside firebase or setsth() or ab url ko function k bahar lakr kese sign up button pr pura user ka data bhejna ha ye sort out krna ha
+					// setProfilePic(url);
+					// console.log(profilePic);
+					// picUrl = url;
+					// console.log(picUrl);
+					//how to use variable inside firebase or setsth() or ab url ko function k bahar lakr kese sign up button pr pura user ka data bhejna ha ye sort out krna ha
 				});
 			}
 		);
+		// const picc = await picUrl;
+		// console.log(picc);
 	};
 
+	// const validate = () => {};
+
 	const signUp = (e) => {
+		const dbRef = db.ref("users/");
+
+		const user = {
+			email: email,
+			username: username,
+			fullname: fullname,
+			contact: contact,
+			// profilePic: profilePic,
+		};
+
 		e.preventDefault();
-		console.log(email, username, fullname, contact, profilePic);
+		console.log(email, username, fullname, contact);
 		auth
 			.createUserWithEmailAndPassword(email, password)
-			.then((user) => {
-				console.log(user);
+			.then((cred) => {
+				console.log(cred);
+				dbRef.push(user);
+				console.log("check fire");
 			})
 			.catch((error) => {
 				var errorMessage = error.message;
@@ -146,7 +168,7 @@ function SignUp() {
 										type="file"
 										name="file"
 										id="exampleFile"
-										value={profilePic}
+										// value={profilePic}
 										onChange={uploadPic}
 									/>
 									<FormText color="muted">Upload your profile picture here</FormText>

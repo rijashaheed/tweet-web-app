@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
-// import firebase from "firebase";
 import "./Pages.css";
 import {
 	Button,
@@ -21,43 +20,17 @@ function SignUp() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [fullname, setFullname] = useState("");
 	const [contact, setContact] = useState("");
-	// const [profilePic, setProfilePic] = useState(null);
-	// var picUrl;
+	const [profilePic, setProfilePic] = useState(null);
 
 	const uploadPic = async (e) => {
 		const file = e.target.files[0];
 		const storageRef = storage.ref("profilePics/");
 		const fileRef = storageRef.child(file.name);
-		const uploadedPic = fileRef.put(file);
-		// setProfilePic(await fileRef.getDownloadURL());
-		// console.log(profilePic);
-		uploadedPic.on(
-			"state_changed",
-			function (snapshot) {
-				console.log(
-					"progress",
-					(snapshot.bytesTransferred / snapshot.totalBytes) * 100
-				);
-			},
-			function (error) {
-				console.log("");
-			},
-			function () {
-				uploadedPic.snapshot.ref.getDownloadURL().then(function (url) {
-					console.log(url);
-					// setProfilePic(url);
-					// console.log(profilePic);
-					// picUrl = url;
-					// console.log(picUrl);
-					//how to use variable inside firebase or setsth() or ab url ko function k bahar lakr kese sign up button pr pura user ka data bhejna ha ye sort out krna ha
-				});
-			}
-		);
-		// const picc = await picUrl;
-		// console.log(picc);
+		await fileRef.put(file);
+		console.log(await fileRef.getDownloadURL());
+		setProfilePic(await fileRef.getDownloadURL());
+		console.log(profilePic);
 	};
-
-	// const validate = () => {};
 
 	const signUp = (e) => {
 		const dbRef = db.ref("users/");
@@ -67,7 +40,7 @@ function SignUp() {
 			username: username,
 			fullname: fullname,
 			contact: contact,
-			// profilePic: profilePic,
+			profilePic: profilePic,
 		};
 
 		e.preventDefault();
@@ -168,7 +141,6 @@ function SignUp() {
 										type="file"
 										name="file"
 										id="exampleFile"
-										// value={profilePic}
 										onChange={uploadPic}
 									/>
 									<FormText color="muted">Upload your profile picture here</FormText>
@@ -184,5 +156,4 @@ function SignUp() {
 		</>
 	);
 }
-
 export default SignUp;

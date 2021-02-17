@@ -1,0 +1,61 @@
+.image-upload > input {
+	display: none;
+}
+
+.image-upload img {
+	width: 80px;
+	cursor: pointer;
+	padding-right: 70px;
+}
+
+.createTweet {
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-bottom: 8px solid #e1e8ed;
+}
+
+.createTweet > form {
+	display: flex;
+	flex-direction: column;
+}
+
+.createTweet__input {
+	padding: 20px;
+	display: flex;
+}
+
+.createTweet__input > input {
+	flex: 1;
+	margin-left: 20px;
+	font-size: 20px;
+	border: none;
+	outline: none;
+}
+
+.avatar {
+	border-radius: 50%;
+}
+
+.createTweet__tweetButton {
+	background-color: #1e8eab;
+	border: none;
+	width: 80px;
+	height: 40px;
+	/* font-size: 24px; */
+	color: white;
+	font-weight: 900;
+	/* margin-top: 20px; */
+	margin-left: auto;
+	cursor: pointer;
+	border-radius: 2px;
+	/* outline: none; */
+}
+
+.createTweet__bottomLine {
+	display: flex;
+	background-color: yellow;
+	flex-direction: column;
+	width: inherit;
+	/* height: 60px; */
+	justify-content: center;
+}

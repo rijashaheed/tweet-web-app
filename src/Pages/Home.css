@@ -1,0 +1,24 @@
+.home {
+	flex: 0.4;
+	border-right: 1px solid var(--grey-color);
+	min-width: fit-content;
+	overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar {
+	display: none;
+}
+
+.home {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.home__header {
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 100;
+	border-bottom: 1px solid var(--grey-color);
+	padding-top: 15px 20px;
+}

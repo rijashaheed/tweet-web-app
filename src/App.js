@@ -6,6 +6,7 @@ import "./App.css";
 // import SignUp from "./Pages/SignUp";
 // import CreateTweet from "./Components/CreateTweet";
 import Navbar from "./Components/Navbar";
+import Home from "./Pages/Home";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			{/* <Header /> */}
 			{/* <CreateTweet /> */}
 			<Navbar />
+			<Home />
 		</div>
 	);
 }

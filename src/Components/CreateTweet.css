@@ -11,7 +11,7 @@
 .createTweet {
 	padding-bottom: 10px;
 	padding-right: 10px;
-	border-bottom: 8px solid #e1e8ed;
+	border-bottom: 8px solid var(--grey-color);
 }
 
 .createTweet > form {
@@ -20,42 +20,59 @@
 }
 
 .createTweet__input {
-	padding: 20px;
+	padding: 10px;
 	display: flex;
 }
 
 .createTweet__input > input {
 	flex: 1;
-	margin-left: 20px;
-	font-size: 20px;
+	margin-left: 10px;
+	margin-top: -10px;
+	border-bottom: 1px solid var(--grey-color) !important;
+	font-size: 18px;
 	border: none;
 	outline: none;
 }
 
 .avatar {
 	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
 }
 
 .createTweet__tweetButton {
-	background-color: #1e8eab;
+	background-color: var(--button-color);
 	border: none;
 	width: 80px;
 	height: 40px;
-	/* font-size: 24px; */
 	color: white;
 	font-weight: 900;
-	/* margin-top: 20px; */
 	margin-left: auto;
 	cursor: pointer;
-	border-radius: 2px;
-	/* outline: none; */
+	border-radius: 8px;
+	margin-top: -36px;
+	margin-right: 19px;
 }
 
+.createTweet__tweetButton:hover {
+	background-color: var(--hover-color);
+	border-color: var(--hover-color);
+}
 .createTweet__bottomLine {
 	display: flex;
-	background-color: yellow;
 	flex-direction: column;
 	width: inherit;
-	/* height: 60px; */
-	justify-content: center;
+}
+
+.createTweet__IconLabel > .MuiSvgIcon-root {
+	padding-left: 80px;
+	font-size: 30px;
+	margin-top: 2px;
+	color: var(--button-color);
+	cursor: pointer;
+}
+
+.createTweet__IconLabel > .MuiSvgIcon-root:hover {
+	color: var(--hover-color);
 }

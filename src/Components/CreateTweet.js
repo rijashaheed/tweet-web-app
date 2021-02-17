@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import { Button } from "reactstrap";
 import "../Components.css";
 import "./CreateTweet.css";
+import Avatar from "./Avatar";
 import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
 import { auth, db, storage } from "../firebase.js";
 
@@ -31,17 +31,18 @@ function CreateTweet() {
 		console.log("tweet", tweetKey);
 	};
 
-	const Avatar = ({ hash }) => {
-		const url =
-			"https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f";
-		return <img src={url} className="avatar" alt="avatar" />;
-	};
+	// const Avatar = ({ hash }) => {
+	// 	const url =
+	// 		"https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f";
+	// 	return <img src={url} className="avatar" alt="avatar" />;
+	// };
 
 	return (
 		<div className="createTweet">
 			<form>
 				<div className="createTweet__input">
-					<Avatar />
+					<Avatar src="https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f" />
+
 					<input
 						className="message"
 						id="tweet"
@@ -55,8 +56,8 @@ function CreateTweet() {
 				</div>
 				<div className="createTweet__bottomLine">
 					<div class="image-upload">
-						<label for="file-input">
-							<ImageOutlinedIcon></ImageOutlinedIcon>
+						<label class="createTweet__IconLabel" for="file-input">
+							<ImageOutlinedIcon />
 						</label>
 						<input id="file-input" type="file" onchange={uploadPic} />
 					</div>

@@ -1,0 +1,44 @@
+.navbarOption {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.navbarOption:hover {
+	background-color: #e8f5fe;
+	color: var(--primary-color);
+	transition: color 100ms ease-out;
+}
+
+.navbarOption > .MuiSvgIcon-root {
+	padding: 20px;
+}
+
+.navbarOption > h2 {
+	font-weight: 800;
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+.navbarLogout {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin-top: 280px;
+}
+
+.navbarLogout > .MuiSvgIcon-root {
+	padding: 20px;
+}
+
+.navbarLogout > h2 {
+	font-weight: 800;
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+.navbarLogout:hover {
+	background-color: #e8f5fe;
+	color: var(--primary-color);
+	transition: color 100ms ease-out;
+}

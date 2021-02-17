@@ -12,10 +12,10 @@ function NavbarOption({ text, Icon }) {
 
 function NavbarLogout({ text, Icon }) {
 	return (
-		<div className="navbarLogout">
+		<button class="navbarLogout">
 			<Icon />
 			<h2>{text}</h2>
-		</div>
+		</button>
 	);
 }
 

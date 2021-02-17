@@ -1,6 +1,8 @@
 body {
 	--primary-color: #50b7f5;
 	--grey-color: #e6ecf0;
+	--button-color: #1da1f2;
+	--hover-color: #1995e0;
 }
 
 .app {

@@ -14,7 +14,7 @@ function Navbar() {
 			<NavbarOption Icon={HomeIcon} text="Home" />
 			<NavbarOption Icon={PersonOutlineOutlinedIcon} text="Profile" />
 			<NavbarOption Icon={FavoriteOutlinedIcon} text="Liked Tweets" />
-			<NavbarLogout Icon={ExitToAppOutlinedIcon} text="Logout" />
+			<NavbarLogout Icon={ExitToAppOutlinedIcon} text="Log out" />
 		</div>
 	);
 }

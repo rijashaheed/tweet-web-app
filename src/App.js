@@ -8,6 +8,8 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 // import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
+import SearchArea from "./Components/SearchArea";
+// import SignIn from "./Pages/SignIn";
 
 function App() {
 	return (
@@ -19,8 +21,10 @@ function App() {
 			{/* <CreateTweet /> */}
 			<Navbar />
 			<Profile />
+			<SearchArea />
 			{/* <Home /> */}
 			{/* <SignUp /> */}
+			{/* <SignIn /> */}
 		</div>
 	);
 }

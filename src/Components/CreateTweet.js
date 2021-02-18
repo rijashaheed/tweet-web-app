@@ -34,8 +34,8 @@ function CreateTweet() {
 		const dbTweets = db.ref("/tweets");
 		var userId = auth.currentUser.uid;
 		const tweet = {
-			tweetMessage: message,
-			tweetPic: pic,
+			: message,
+			tweetPic: pic,tweetMessage
 			userId: userId,
 			// postedOn: dbTweets.child.set(new Date().getTime()),
 		};

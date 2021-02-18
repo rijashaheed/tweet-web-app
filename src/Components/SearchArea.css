@@ -1,0 +1,28 @@
+.searchArea {
+	flex: 0.2;
+}
+
+.searchArea__input {
+	display: flex;
+	align-items: center;
+	background-color: var(--grey-color);
+	padding: 10px;
+	border-radius: 18px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.searchArea__input > input {
+	border: none;
+	background-color: var(--grey-color);
+}
+
+.searchArea__input > input:focus {
+	border: none;
+	outline: none;
+	background-color: var(--grey-color);
+}
+
+.SearchArea__searchIcon {
+	color: gray;
+}

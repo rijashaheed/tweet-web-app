@@ -6,7 +6,7 @@ import Tweet from "../Components/Tweet";
 function Home() {
 	return (
 		<div className="home">
-			<h2 className="home__header">Helllo</h2>
+			<h2 className="home__header">Home</h2>
 			<CreateTweet />
 			<Tweet />
 			<Tweet />

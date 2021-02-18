@@ -27,8 +27,9 @@ function SignUp() {
 		const storageRef = storage.ref("profilePics/");
 		const fileRef = storageRef.child(file.name);
 		await fileRef.put(file);
-		console.log(await fileRef.getDownloadURL());
-		setProfilePic(await fileRef.getDownloadURL());
+		const picUrl = await fileRef.getDownloadURL();
+		// console.log(await fileRef.getDownloadURL());
+		setProfilePic(picUrl);
 		console.log(profilePic);
 	};
 

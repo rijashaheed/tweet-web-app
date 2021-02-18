@@ -12,7 +12,7 @@ function Tweet({ displayName, userName, text, image, avatar }) {
 			<div className="tweet__body">
 				<div className="tweet__header">
 					<div className="tweet__headerText">
-						<h3>Rija Shaheed </h3>
+						<h4>Rija Shaheed </h4>
 						<span className="tweet__userHandle">@rijashaheed</span>
 					</div>
 					<div className="tweet__headerDescription">
@@ -22,6 +22,7 @@ function Tweet({ displayName, userName, text, image, avatar }) {
 				<img
 					className="tweet__picture"
 					src="https://firebasestorage.googleapis.com/v0/b/tweet-web-app-7b686.appspot.com/o/472.jpg?alt=media&token=52f3d2fe-c319-4b79-b00a-6ec20c61152b"
+					alt="postImage"
 				/>
 				<div className="tweet__footer">
 					<FavoriteBorderIcon fontSize="small" />

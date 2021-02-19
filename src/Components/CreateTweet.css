@@ -64,9 +64,8 @@
 	flex-direction: column;
 	width: inherit;
 }
-
 .createTweet__IconLabel > .MuiSvgIcon-root {
-	padding-left: 80px;
+	margin-left: 80px;
 	font-size: 30px;
 	margin-top: 2px;
 	color: var(--button-color);
@@ -76,3 +75,19 @@
 .createTweet__IconLabel > .MuiSvgIcon-root:hover {
 	color: var(--hover-color);
 }
+
+/* .createTweet__uploadImage {
+	padding-left: 80px;
+	font-size: 30px;
+	margin-top: 2px;
+	color: blue;
+	cursor: pointer;
+} */
+
+/* .createTweet__uploadImage {
+	margin-left: 80px;
+	font-size: 30px;
+	margin-top: 2px;
+	color: var(--button-color);
+	cursor: pointer;
+} */

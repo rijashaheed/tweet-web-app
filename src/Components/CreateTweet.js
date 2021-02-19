@@ -34,10 +34,10 @@ function CreateTweet() {
 		const dbTweets = db.ref("/tweets");
 		var userId = auth.currentUser.uid;
 		const tweet = {
-			: message,
-			tweetPic: pic,tweetMessage
+			tweetMessage: message,
+			tweetPic: pic,
 			userId: userId,
-			// postedOn: dbTweets.child.set(new Date().getTime()),
+			postedOn: Date(),
 		};
 
 		const tweetKey = dbTweets.push(tweet).key;
@@ -77,7 +77,7 @@ function CreateTweet() {
 			<div className="createTweet__bottomLine">
 				<div class="image-upload">
 					<label class="createTweet__IconLabel" for="file-input">
-						<ImageOutlinedIcon />
+						<ImageOutlinedIcon className="createTweet__uploadImage" />
 					</label>
 					<input id="file-input" type="file" onChange={uploadPic} />
 				</div>

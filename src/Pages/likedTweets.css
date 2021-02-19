@@ -1,20 +1,17 @@
-.home {
+.likedTweets {
 	flex: 0.5;
 	border-right: 1px solid var(--grey-color);
 	min-width: fit-content;
 	overflow-y: scroll;
-}
-
-.home::-webkit-scrollbar {
-	display: none;
-}
-
-.home {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
 
-.home__header {
+.likedTweets::-webkit-scrollbar {
+	display: none;
+}
+
+.likedTweets__header {
 	position: sticky;
 	top: 0;
 	background-color: white;

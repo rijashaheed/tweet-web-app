@@ -22,21 +22,24 @@ function UserInfoArea() {
 	);
 }
 
-function Profile() {
-	var currentUid = auth.currentUser.uid;
+function Profile(event) {
+	// event.preventDefault();
+	// const [currentUser, setCurrentUser] = useState(auth.currentUser.uid);
 	const [tweets, setTweets] = useState("");
 
-	//run when feed component loads 2:54
-	// useEffect(() => {
-	// 	db
-	// 		.ref("tweets")
-	// 		// .equalTo(currentUid)
-	// 		.once("value", (snapshot) => {
-	// 			snapshot.forEach((childSnapshot) => {
-	// 				setTweets(childSnapshot.val());
-	// 			});
-	// 		});
-	// }, []);
+	useEffect(() => {
+		db
+			.ref("tweets")
+			.orderByChild("userId")
+			// .equalTo(currentUser)
+			.once("value", function (snapshot) {
+				snapshot.forEach(function (childSnapshot) {
+					console.log("console retrieve", childSnapshot.val());
+					setTweets(childSnapshot.val());
+					console.log(tweets);
+				});
+			});
+	}, []);
 
 	return (
 		<div className="profile">
@@ -53,7 +56,7 @@ function Profile() {
 			))} */}
 			<Tweet
 				displayName="Hamna Shaheed"
-				userName={currentUid}
+				userName="username"
 				text="I'm beautiful"
 				image="https://firebasestorage.googleapis.com/v0/b/tweet-web-app-7b686.appspot.com/o/472.jpg?alt=media&token=52f3d2fe-c319-4b79-b00a-6ec20c61152b"
 				avatar="https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f"

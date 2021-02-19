@@ -7,7 +7,7 @@ function SearchArea() {
 		<div className="searchArea">
 			<div className="searchArea__input">
 				<input placeholder="Search" type="text" />
-				<SearchIcon className="SearchArea__searchIcon" />
+				<SearchIcon className="searchArea__searchIcon" />
 			</div>
 		</div>
 	);

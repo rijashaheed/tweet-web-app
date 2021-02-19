@@ -33,30 +33,32 @@ function SignUp() {
 		console.log(profilePic);
 	};
 
-	const signUp = (e) => {
-		const dbRef = db.ref("users/");
-
-		const user = {
-			email: email,
-			username: username,
-			fullname: fullname,
-			contact: contact,
-			profilePic: profilePic,
-		};
-
-		e.preventDefault();
-		console.log(email, username, fullname, contact);
-		auth
-			.createUserWithEmailAndPassword(email, password)
-			.then((cred) => {
-				console.log(cred);
-				dbRef.push(user);
-				console.log("check fire");
-			})
+	const writeUserData = (user) => {
+		db
+			.ref("users/" + user.userId)
+			.set(user)
 			.catch((error) => {
-				var errorMessage = error.message;
-				console.log(errorMessage);
+				console.log(error);
 			});
+	};
+
+	const signUp = async (e) => {
+		try {
+			console.log(email, username, fullname, contact);
+			const authUser = await auth.createUserWithEmailAndPassword(email, password);
+
+			const user = {
+				email: email,
+				username: username,
+				fullname: fullname,
+				contact: contact,
+				profilePic: profilePic,
+				userId: authUser.uid,
+			};
+			await writeUserData(user);
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 
 	return (

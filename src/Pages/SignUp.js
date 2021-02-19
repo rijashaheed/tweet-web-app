@@ -21,6 +21,13 @@ function SignUp() {
 	const [fullname, setFullname] = useState("");
 	const [contact, setContact] = useState("");
 	const [profilePic, setProfilePic] = useState(null);
+	const fullnameArr = fullname.split("");
+	const passArr = password.split("");
+	const contactArr = contact.split("");
+	const emailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	const numbers = /\d/;
+	const capLetter = /[A-Z]/;
+	const symbols = /[-\/:-@\[-\`{-~!]/;
 
 	const uploadPic = async (e) => {
 		const file = e.target.files[0];
@@ -40,6 +47,52 @@ function SignUp() {
 			.catch((error) => {
 				console.log(error);
 			});
+	};
+
+	const validate = () => {
+		if (
+			username == "" ||
+			fullname == "" ||
+			contact == "" ||
+			email == "" ||
+			password == "" ||
+			confirmPassword == ""
+		) {
+			alert("All fields are required");
+			return false;
+		}
+
+		if (fullnameArr[0] != fullnameArr[0].toUpperCase()) {
+			alert("First letter of your name should be capital");
+			return false;
+		}
+
+		if (contactArr.length < 11) {
+			alert("Enter a valid phone no");
+			return false;
+		}
+
+		if (!email.match(emailFormat)) {
+			alert("Please enter a valid Email address");
+			return false;
+		}
+
+		if (
+			passArr.length < 8 ||
+			!numbers.test(password) ||
+			!capLetter.test(password) ||
+			!symbols.test(password)
+		) {
+			alert(
+				"Password must be minimum of 8 characters length with a number, capital letter and special charater included"
+			);
+			return false;
+		}
+		if (confirmPassword != password) {
+			alert("Password do not match");
+		} else {
+			signUp();
+		}
 	};
 
 	const signUp = async (e) => {
@@ -149,7 +202,7 @@ function SignUp() {
 									<FormText color="muted">Upload your profile picture here</FormText>
 								</FormGroup>
 							</Form>
-							<Button variant="custom" type="submit" onClick={signUp}>
+							<Button variant="custom" type="submit" onClick={validate}>
 								Sign Up
 							</Button>
 						</div>

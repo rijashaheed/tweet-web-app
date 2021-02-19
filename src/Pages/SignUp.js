@@ -1,17 +1,11 @@
+/*eslint-disable*/
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import "./Pages.css";
-import {
-	Button,
-	Form,
-	FormGroup,
-	Input,
-	FormText,
-	Container,
-	Row,
-	Col,
-} from "reactstrap";
+import "./SignUp.css";
+import { Form, FormGroup, Input, Container, Row, Col } from "reactstrap";
 import { auth, storage, db } from "../firebase.js";
+import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
 
 function SignUp() {
 	const [email, setEmail] = useState("");
@@ -124,7 +118,7 @@ function SignUp() {
 					</Col>
 					<Col>
 						<div className="sign-up">
-							<h3 className="sign-up-head">Create an Account</h3>
+							<h2 className="sign-up-head">Create an Account</h2>
 							<Form onSubmit={(e) => e.preventDefault() && false}>
 								<FormGroup>
 									<Input
@@ -193,19 +187,20 @@ function SignUp() {
 								</FormGroup>
 
 								<FormGroup>
-									<Input
-										className="input-field"
-										type="file"
-										name="file"
-										id="exampleFile"
-										onChange={uploadPic}
-									/>
-									<FormText color="muted">Upload your profile picture here</FormText>
+									<div class="image-upload">
+										<label class="signup__IconLabel" for="file-input">
+											<FaceOutlinedIcon className="signup__profilePicIcon" />
+										</label>
+										<input id="file-input" type="file" onChange={uploadPic} />
+										<span className="signup__profilePicLabel">
+											Upload your profile picture here
+										</span>
+									</div>
 								</FormGroup>
 							</Form>
-							<Button variant="custom" type="submit" onClick={validate}>
+							<button className="signup__btn" type="submit" onClick={validate}>
 								Sign Up
-							</Button>
+							</button>
 						</div>
 					</Col>
 				</Row>

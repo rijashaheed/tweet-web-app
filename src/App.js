@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from "react";
 import "./App.css";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
@@ -6,7 +7,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 // import SideBar from "./Pages/Sidebar";
 // import SignUp from "./Pages/SignUp";
 // import CreateTweet from "./Components/CreateTweet";
-// import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 // import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import SearchArea from "./Components/SearchArea";
@@ -20,15 +21,15 @@ function App() {
 	return (
 		<div className="app">
 			<Router>
-				{/* <Navbar /> */}
-				<SignUp />
-				{/* <Switch>
+				<Navbar />
+				{/* <SignUp /> */}
+				<Switch>
 					<Route path="/" exact component={Home} />
 					<Route path="/profile" component={Profile} />
 					<Route path="/likedTweets" component={LikedTweets} />
 					<Route path="/*" children={<Error />} />
-				</Switch> */}
-				{/* <SearchArea /> */}
+				</Switch>
+				<SearchArea />
 			</Router>
 
 			{/* <FrontPage /> */}

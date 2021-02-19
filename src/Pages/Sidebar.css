@@ -39,35 +39,3 @@
 	font-weight: 600;
 	font-size: 18px;
 }
-/* #1e8eab */
-/* #74b4cc */
-.column {
-	width: 100%;
-	padding: 0;
-}
-
-.sign-up {
-	display: flex;
-	height: 100vh;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-.input-field {
-	width: 400px;
-}
-
-.sign-up-head {
-	/* -webkit-background-clip: text; */
-	font-size: 38px;
-	/* color: transparent; */
-	/* background-image: linear-gradient(to right bottom, #1e8eab, #74b4cc); */
-	margin-bottom: 18px;
-	font-weight: 400;
-}
-
-.btn-custom {
-	width: 400px;
-}

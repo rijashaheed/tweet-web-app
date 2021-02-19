@@ -1,0 +1,37 @@
+.signup__profilePicLabel {
+	color: grey;
+	font-size: 14px;
+}
+
+/* .signup__profilePicIcon {
+	/* margin-left: 80px; */
+/* width: 70px; */
+/* margin-top: 2px;
+	color: var(--button-color);
+	cursor: pointer;
+	font-size: 22px;
+} */
+
+.signup__IconLabel > .MuiSvgIcon-root {
+	margin-left: 10px;
+	font-size: 38px;
+	margin-top: 2px;
+	color: var(--button-color);
+	cursor: pointer;
+}
+
+.signup__profilePicLabel {
+	margin-left: 10px;
+}
+
+.signup__btn {
+	background-color: var(--button-color);
+	border: none;
+	width: 200px;
+	height: 50px;
+	color: white;
+	font-weight: 900;
+	margin-left: 20px;
+	cursor: pointer;
+	border-radius: 8px;
+}

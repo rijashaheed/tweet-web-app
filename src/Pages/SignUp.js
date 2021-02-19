@@ -35,12 +35,12 @@ function SignUp() {
 		const fileRef = storageRef.child(file.name);
 		await fileRef.put(file);
 		const picUrl = await fileRef.getDownloadURL();
-		// console.log(await fileRef.getDownloadURL());
 		setProfilePic(picUrl);
 		console.log(profilePic);
 	};
 
 	const writeUserData = (user) => {
+		console.log(user.userId);
 		db
 			.ref("users/" + user.userId)
 			.set(user)
@@ -51,18 +51,18 @@ function SignUp() {
 
 	const validate = () => {
 		if (
-			username == "" ||
-			fullname == "" ||
-			contact == "" ||
-			email == "" ||
-			password == "" ||
-			confirmPassword == ""
+			username === "" ||
+			fullname === "" ||
+			contact === "" ||
+			email === "" ||
+			password === "" ||
+			confirmPassword === ""
 		) {
 			alert("All fields are required");
 			return false;
 		}
 
-		if (fullnameArr[0] != fullnameArr[0].toUpperCase()) {
+		if (fullnameArr[0] !== fullnameArr[0].toUpperCase()) {
 			alert("First letter of your name should be capital");
 			return false;
 		}
@@ -88,7 +88,7 @@ function SignUp() {
 			);
 			return false;
 		}
-		if (confirmPassword != password) {
+		if (confirmPassword !== password) {
 			alert("Password do not match");
 		} else {
 			signUp();
@@ -106,8 +106,9 @@ function SignUp() {
 				fullname: fullname,
 				contact: contact,
 				profilePic: profilePic,
-				userId: authUser.uid,
+				userId: authUser.user.uid,
 			};
+			console.log(authUser);
 			await writeUserData(user);
 		} catch (error) {
 			console.log(error.message);

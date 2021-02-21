@@ -12,7 +12,8 @@
 }
 
 .navbarOption > .MuiSvgIcon-root {
-	padding: 20px;
+	padding: 20px; /*not working same always */
+	/* margin: 20px; */
 }
 
 .navbarOption > h2 {
@@ -50,4 +51,8 @@
 .navbarLogout:hover {
 	background-color: var(--hover-color);
 	transition: color 100ms ease-out;
+}
+
+.navbarLogout:focus {
+	outline: none;
 }

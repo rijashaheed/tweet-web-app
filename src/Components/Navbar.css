@@ -11,3 +11,13 @@ a:-webkit-any-link {
 	text-decoration: none;
 	color: inherit;
 }
+
+a:-webkit-any-link:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:-webkit-any-link:focus {
+	text-decoration: none;
+	color: inherit;
+}

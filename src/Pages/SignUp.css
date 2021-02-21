@@ -1,16 +1,37 @@
+.column {
+	width: 100%;
+	padding: 0;
+}
+
+.input-field {
+	width: 400px;
+	margin-bottom: 15px;
+}
+
+.signup {
+	display: flex;
+	max-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.signup__head {
+	font-size: 40px;
+	margin-bottom: 25px;
+	margin-top: 10px;
+}
+
 .signup__profilePicLabel {
 	color: grey;
 	font-size: 14px;
 }
 
-/* .signup__profilePicIcon {
-	/* margin-left: 80px; */
-/* width: 70px; */
-/* margin-top: 2px;
-	color: var(--button-color);
-	cursor: pointer;
-	font-size: 22px;
-} */
+.signup__bottomOption {
+	margin-top: 18px;
+	margin-left: 170px;
+}
 
 .signup__IconLabel > .MuiSvgIcon-root {
 	margin-left: 10px;
@@ -34,4 +55,27 @@
 	margin-left: 20px;
 	cursor: pointer;
 	border-radius: 8px;
+}
+
+.signup__btn:hover {
+	background-color: var(--hover-color);
+}
+
+.signup__btn:focus {
+	outline: none;
+}
+
+.signup__bottomOption > a:-webkit-any-link {
+	text-decoration: none;
+	color: var(--button-color);
+}
+
+.signup__bottomOption > a:-webkit-any-link:hover {
+	text-decoration: none;
+	color: var(--hover-color);
+}
+
+.signup__bottomOption > a:-webkit-any-link:focus {
+	text-decoration: none;
+	color: var(--hover-color);
 }

@@ -3,7 +3,7 @@ import "./Tweet.css";
 import Avatar from "./Avatar";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
-function Tweet({ displayName, userName, text, image, avatar }) {
+function Tweet({ displayName, username, text, image, avatar }) {
 	return (
 		<div className="tweet">
 			<div className="tweet__avatar">
@@ -13,7 +13,7 @@ function Tweet({ displayName, userName, text, image, avatar }) {
 				<div className="tweet__header">
 					<div className="tweet__headerText">
 						<h4>{displayName}</h4>
-						<span className="tweet__userHandle">@{userName}</span>
+						<span className="tweet__userHandle">@{username}</span>
 					</div>
 					<div className="tweet__headerDescription">
 						<p>{text}</p>

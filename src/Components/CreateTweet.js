@@ -1,67 +1,75 @@
-import React, { useState } from "react";
+/*eslint-disable */
+import React, { useEffect, useState } from "react";
 import "../Components.css";
 import "./CreateTweet.css";
 import Avatar from "./Avatar";
 import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
 import { auth, db, storage } from "../firebase.js";
-// import moment from "moment";
 
-// const Time = ({ time }) => {
-// 	<span></span>;
-// };
 function CreateTweet() {
 	const [message, setMessage] = useState("");
 	const [pic, setPic] = useState(null);
+	const [userId, setUserId] = useState(null);
+	const [user, setUser] = useState({});
+	let likes = 0;
+
+	auth.onAuthStateChanged(function (user) {
+		if (user) {
+			console.log(user.uid);
+			setUserId(user.uid);
+		} else {
+			// No user is signed in.
+		}
+	});
+
+	useEffect(() => {
+		db
+			.ref("users")
+			.orderByChild("userId")
+			.equalTo(userId)
+			.once("value", (snapshot) => {
+				snapshot.forEach((childSnapshot) => {
+					console.log(childSnapshot.val());
+					setUser(childSnapshot.val());
+				});
+			});
+	}, []);
 
 	const uploadPic = async (e) => {
 		console.log("running");
 		const file = e.target.files[0];
 		const storageRef = storage.ref("tweetPics/");
 		const fileRef = storageRef.child(file.name);
-		// await fileRef.put(file);
-		// const picUrl = await fileRef.getDownloadURL();
-		// // console.log(picUrl);
-		// setPic(picUrl);
-		// console.log(pic);
 		await fileRef.put(file);
 		const picUrl = await fileRef.getDownloadURL();
 		// console.log(await fileRef.getDownloadURL());
 		setPic(picUrl);
 		console.log(pic);
 	};
+
 	const postTweet = () => {
 		console.log("running");
 		const dbTweets = db.ref("/tweets");
-		var userId = auth.currentUser.uid;
+
 		const tweet = {
-			tweetMessage: message,
-			tweetPic: pic,
-			userId: userId,
-			postedOn: Date(),
+			text: message,
+			image: pic,
+			createdBy: user.fullname,
+			userhandle: user.username,
+			createdOn: Date(),
+			likes: likes,
+			// userAvatar: user.profilePic && user.profilePic,
 		};
 
 		const tweetKey = dbTweets.push(tweet).key;
-		console.log(
-			"tweet",
-			tweetKey,
-			userId
-			// dbTweets.child.set(new Date().getTime())
-		);
-
-		// console.log("time", moment().fromNow());
+		console.log("tweet", tweetKey, userId);
+		setMessage("");
 	};
-
-	// const Avatar = ({ hash }) => {
-	// 	const url =
-	// 		"https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f";
-	// 	return <img src={url} className="avatar" alt="avatar" />;
-	// };
 
 	return (
 		<div className="createTweet">
-			{/* <form> */}
 			<div className="createTweet__input">
-				<Avatar src="https://www.gravatar.com/avatar/c6c487b3f2d680a5bb97b3af06eb747f" />
+				<Avatar src={user.profilePic} />
 
 				<input
 					className="message"
@@ -85,7 +93,6 @@ function CreateTweet() {
 					Tweet
 				</button>
 			</div>
-			{/* </form> */}
 		</div>
 	);
 }

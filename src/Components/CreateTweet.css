@@ -59,6 +59,11 @@
 	background-color: var(--hover-color);
 	border-color: var(--hover-color);
 }
+
+.createTweet__tweetButton:focus {
+	outline: none;
+}
+
 .createTweet__bottomLine {
 	display: flex;
 	flex-direction: column;

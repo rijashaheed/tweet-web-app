@@ -1,15 +1,9 @@
 import React, { useState } from "react";
+import "./SignIn.css";
 import { auth } from "../firebase";
 import Sidebar from "./Sidebar";
-import {
-	Button,
-	Form,
-	FormGroup,
-	Input,
-	Container,
-	Row,
-	Col,
-} from "reactstrap";
+import { Link } from "react-router-dom";
+import { Form, FormGroup, Input, Container, Row, Col } from "reactstrap";
 
 function SignIn() {
 	const [email, setEmail] = useState("");
@@ -35,34 +29,44 @@ function SignIn() {
 						<Sidebar />
 					</Col>
 					<Col>
-						<div className="sign-up">
-							<h3 className="sign-up-head">Sign In</h3>
+						<div className="signin">
+							<h2 className="signin__head">Sign In</h2>
 							<Form onSubmit={(e) => e.preventDefault() && false}>
-								<FormGroup>
-									<Input
-										className="input-field"
-										type="email"
-										name="email"
-										placeholder="Email"
-										value={email}
-										onChange={(e) => setEmail(e.target.value)}
-									/>
-								</FormGroup>
+								<div className="signin__input">
+									<FormGroup>
+										<Input
+											className="input-field"
+											type="email"
+											name="email"
+											placeholder="Email"
+											value={email}
+											onChange={(e) => setEmail(e.target.value)}
+										/>
+									</FormGroup>
+								</div>
 
-								<FormGroup>
-									<Input
-										className="input-field"
-										type="password"
-										name="password"
-										placeholder="Password"
-										value={password}
-										onChange={(e) => setPassword(e.target.value)}
-									/>
-								</FormGroup>
+								<div className="signin__input">
+									<FormGroup>
+										<Input
+											className="input-field"
+											type="password"
+											name="password"
+											placeholder="Password"
+											value={password}
+											onChange={(e) => setPassword(e.target.value)}
+										/>
+									</FormGroup>
+								</div>
 							</Form>
-							<Button variant="custom" type="submit" onClick={signIn}>
-								Sign In
-							</Button>
+							<Link to="/home">
+								<button className="signin__btn " type="submit" onClick={signIn}>
+									Sign In
+								</button>
+							</Link>
+							<p className="signin__bottomOption">
+								Don't have an account?
+								<Link to="/sign-up"> Sign Up</Link>
+							</p>
 						</div>
 					</Col>
 				</Row>

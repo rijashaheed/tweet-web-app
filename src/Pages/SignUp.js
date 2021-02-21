@@ -6,6 +6,7 @@ import "./SignUp.css";
 import { Form, FormGroup, Input, Container, Row, Col } from "reactstrap";
 import { auth, storage, db } from "../firebase.js";
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
+import { Link } from "react-router-dom";
 
 function SignUp() {
 	const [email, setEmail] = useState("");
@@ -117,8 +118,8 @@ function SignUp() {
 						<Sidebar />
 					</Col>
 					<Col>
-						<div className="sign-up">
-							<h2 className="sign-up-head">Create an Account</h2>
+						<div className="signup">
+							<h2 className="signup__head">Create an Account</h2>
 							<Form onSubmit={(e) => e.preventDefault() && false}>
 								<FormGroup>
 									<Input
@@ -198,10 +199,15 @@ function SignUp() {
 									</div>
 								</FormGroup>
 							</Form>
-							<button className="signup__btn" type="submit" onClick={validate}>
-								Sign Up
-							</button>
+							<Link to="/home">
+								<button className="signup__btn" type="submit" onClick={validate}>
+									Sign Up
+								</button>
+							</Link>
 						</div>
+						<p className="signup__bottomOption">
+							Already have an account? <Link to="/">Sign In</Link>
+						</p>
 					</Col>
 				</Row>
 			</Container>

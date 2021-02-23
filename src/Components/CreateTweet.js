@@ -83,13 +83,13 @@ function CreateTweet() {
 				></input>
 			</div>
 			<div className="createTweet__bottomLine">
-				<div class="image-upload">
-					<label class="createTweet__IconLabel" for="file-input">
+				<div className="image-upload">
+					<label className="createTweet__IconLabel" htmlFor="file-input">
 						<ImageOutlinedIcon className="createTweet__uploadImage" />
 					</label>
 					<input id="file-input" type="file" onChange={uploadPic} />
 				</div>
-				<button class="createTweet__tweetButton" onClick={postTweet}>
+				<button className="createTweet__tweetButton" onClick={postTweet}>
 					Tweet
 				</button>
 			</div>

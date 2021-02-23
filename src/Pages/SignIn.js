@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./SignIn.css";
 import { auth } from "../firebase";
 import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, FormGroup, Input, Container, Row, Col } from "reactstrap";
 
 function SignIn() {
+	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -14,6 +15,7 @@ function SignIn() {
 			.signInWithEmailAndPassword(email, password)
 			.then((user) => {
 				console.log("user signed in");
+				history.push("/home");
 			})
 			.catch((error) => {
 				var errorMessage = error.message;
@@ -58,11 +60,9 @@ function SignIn() {
 									</FormGroup>
 								</div>
 							</Form>
-							<Link to="/home">
-								<button className="signin__btn " type="submit" onClick={signIn}>
-									Sign In
-								</button>
-							</Link>
+							<button className="signin__btn " type="submit" onClick={signIn}>
+								Sign In
+							</button>
 							<p className="signin__bottomOption">
 								Don't have an account?
 								<Link to="/sign-up"> Sign Up</Link>

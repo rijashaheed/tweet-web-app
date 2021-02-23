@@ -6,9 +6,10 @@ import "./SignUp.css";
 import { Form, FormGroup, Input, Container, Row, Col } from "reactstrap";
 import { auth, storage, db } from "../firebase.js";
 import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function SignUp() {
+	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -105,6 +106,7 @@ function SignUp() {
 			};
 			console.log(authUser);
 			await writeUserData(user);
+			history.push("/home");
 		} catch (error) {
 			console.log(error.message);
 		}
@@ -199,11 +201,9 @@ function SignUp() {
 									</div>
 								</FormGroup>
 							</Form>
-							<Link to="/home">
-								<button className="signup__btn" type="submit" onClick={validate}>
-									Sign Up
-								</button>
-							</Link>
+							<button className="signup__btn" type="submit" onClick={validate}>
+								Sign Up
+							</button>
 						</div>
 						<p className="signup__bottomOption">
 							Already have an account? <Link to="/">Sign In</Link>

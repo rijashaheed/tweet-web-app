@@ -8,8 +8,12 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 import FavoriteOutlinedIcon from "@material-ui/icons/FavoriteOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import "./NavbarOption.css";
+// import { AppContext } from "../App";
 
 function Navbar() {
+	// const appContext = useContext(AppContext);
+	// const [user, setUser] = useState({});
+	// setUser(appContext.userState);
 	return (
 		<div className="navbar">
 			<Link to="/home">

@@ -1,5 +1,5 @@
 .profile {
-	flex: 0.4;
+	flex: 0.5;
 	border-right: 1px solid var(--grey-color);
 	min-width: fit-content;
 	overflow-y: scroll;

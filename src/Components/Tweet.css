@@ -31,7 +31,7 @@
 .tweet__userHandle {
 	color: grey;
 	margin-left: 8px;
-	margin-top: 22px;
+	/* margin-top: 28px; */
 }
 
 .tweet__headerText {
@@ -50,5 +50,5 @@
 }
 
 .tweet__headerDescription {
-	margin-top: -30px;
+	margin-top: -10px;
 }

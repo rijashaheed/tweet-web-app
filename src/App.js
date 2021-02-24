@@ -2,7 +2,6 @@
 import React, { useEffect, useReducer, createContext } from "react";
 import "./App.css";
 import { auth } from "./firebase";
-// import CircularProgress from "@material-ui/core/CircularProgress";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import SearchArea from "./Components/SearchArea";
@@ -13,14 +12,10 @@ import Error from "./Pages/Error";
 import LikedTweets from "./Pages/LikedTweets";
 import SignIn from "./Pages/SignIn";
 
-// const Loader = () => {
-// 	return <CircularProgress />;
-// };
-
 export const AppContext = createContext();
 
 const initialState = {
-	user: null,
+	user: {},
 };
 
 const reducer = (state, action) => {
@@ -44,10 +39,13 @@ function App() {
 			console.log("the user is ...", authUser.user);
 
 			if (authUser) {
-				console.log(authUser);
+				console.log(authUser.user);
 				dispatch({
 					type: "SET_USER",
-					user: authUser,
+					user: {
+						uid: authUser.uid,
+						email: authUser.email,
+					},
 				});
 			} else {
 				//the user is logged out

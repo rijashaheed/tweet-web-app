@@ -1,36 +1,41 @@
 /*eslint-disable */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../Components.css";
 import "./CreateTweet.css";
 import Avatar from "./Avatar";
 import ImageOutlinedIcon from "@material-ui/icons/ImageOutlined";
-import { auth, db, storage } from "../firebase.js";
+import { db, storage } from "../firebase.js";
+import { AppContext } from "../App";
 
 function CreateTweet() {
+	const appContext = useContext(AppContext);
+	const currentUser = appContext.userState.user.uid;
 	const [message, setMessage] = useState("");
 	const [pic, setPic] = useState(null);
-	const [userId, setUserId] = useState(null);
+	// const [userId, setUserId] = useState(null);
 	const [user, setUser] = useState({});
 	let likes = 0;
 
-	auth.onAuthStateChanged(function (user) {
-		if (user) {
-			console.log(user.uid);
-			setUserId(user.uid);
-		} else {
-			// No user is signed in.
-		}
-	});
+	// auth.onAuthStateChanged(function (user) {
+	// 	if (user) {
+	// 		console.log(user.uid);
+	// 		setUserId(user.uid);
+	// 	} else {
+	// 		// No user is signed in.
+	// 	}
+	// });
 
 	useEffect(() => {
+		console.log(currentUser);
 		db
 			.ref("users")
 			.orderByChild("userId")
-			.equalTo(userId)
+			.equalTo(currentUser)
 			.once("value", (snapshot) => {
 				snapshot.forEach((childSnapshot) => {
 					console.log(childSnapshot.val());
 					setUser(childSnapshot.val());
+					console.log(user);
 				});
 			});
 	}, []);
@@ -56,13 +61,14 @@ function CreateTweet() {
 			image: pic,
 			createdBy: user.fullname,
 			userhandle: user.username,
-			createdOn: Date(),
+			createdOn: Math.round((-1 * new Date().getTime()) / 1000),
+			postedOn: Math.round(new Date().getTime() / 1000),
 			likes: likes,
-			// userAvatar: user.profilePic && user.profilePic,
+			userAvatar: user.profilePic,
 		};
 
 		const tweetKey = dbTweets.push(tweet).key;
-		console.log("tweet", tweetKey, userId);
+		console.log("tweet", tweetKey, currentUser);
 		setMessage("");
 	};
 

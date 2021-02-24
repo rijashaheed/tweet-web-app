@@ -3,7 +3,7 @@ import "./Tweet.css";
 import Avatar from "./Avatar";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
-function Tweet({ displayName, username, text, image, avatar }) {
+function Tweet({ displayName, username, text, image, avatar, date }) {
 	return (
 		<div className="tweet">
 			<div className="tweet__avatar">
@@ -22,7 +22,7 @@ function Tweet({ displayName, username, text, image, avatar }) {
 				<img className="tweet__picture" src={image} alt="postImage" />
 				<div className="tweet__footer">
 					<FavoriteBorderIcon fontSize="small" />
-					<span className="tweet__postTime">Jul 4, 2019</span>
+					<span className="tweet__postTime">{date}</span>
 				</div>
 			</div>
 		</div>

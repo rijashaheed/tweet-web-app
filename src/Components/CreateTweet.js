@@ -65,6 +65,7 @@ function CreateTweet() {
 			postedOn: Math.round(new Date().getTime() / 1000),
 			likes: likes,
 			userAvatar: user.profilePic,
+			userId: currentUser,
 		};
 
 		const tweetKey = dbTweets.push(tweet).key;

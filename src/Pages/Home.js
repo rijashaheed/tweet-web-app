@@ -25,9 +25,13 @@ function Home() {
 				snapshot.forEach(function (childSnapshot) {
 					arr.push(childSnapshot);
 					setTweets(arr.map((elem) => elem.val()));
+					console.log(tweets);
 				});
 				console.log(tweets.length);
 				console.log("outside loop", tweets);
+				tweets.map((tweet) => {
+					console.log(tweet.postedOn);
+				});
 			});
 	}, []);
 

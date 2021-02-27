@@ -1,22 +1,16 @@
 /*eslint-disable*/
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useHistory } from "react";
+import { AppContext } from "../App";
 import Avatar from "./Avatar";
-import {
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-} from "reactstrap";
 import SearchIcon from "@material-ui/icons/Search";
-import AddIcon from "@material-ui/icons/Add";
 import "./SearchArea.css";
 import { db } from "../firebase";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import { Link } from "react-router-dom";
 
 function SearchArea() {
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
-
+	// const history = useHistory();
+	const appContext = useContext(AppContext);
+	const currentUser = appContext.userState.user.uid;
 	const [users, setUsers] = useState();
 	const [searchedUser, setSearchedUser] = useState("");
 
@@ -33,9 +27,6 @@ function SearchArea() {
 					console.log("users", users);
 				});
 				console.log("outside loop", users);
-				// users.map((user) => {
-				// 	console.log(user);
-				// });
 			});
 	}, []);
 
@@ -66,21 +57,17 @@ function SearchArea() {
 					})
 					.map((val, key) => {
 						return (
-							<div key={key} className="searchArea__user">
-								<Avatar src={val.profilePic} />
-								<div className="searchArea__user-text">
-									<p className="searchArea__user-text-fullname">{val.fullname}</p>
-									<span className="searchArea__user-text-username">@{val.username}</span>
+							<Link to={`/view-profile/${searchedUser.username}`}>
+								<div key={key} className="searchArea__user">
+									<Avatar src={val.profilePic} />
+									<div className="searchArea__user-text">
+										<p className="searchArea__user-text-fullname">{val.fullname}</p>
+										<span className="searchArea__user-text-username">
+											@{val.username}
+										</span>
+									</div>
 								</div>
-								<button
-									className="searcArea__followBtn"
-									onFocus={() => {
-										"followed", "d";
-									}}
-								>
-									Follow
-								</button>
-							</div>
+							</Link>
 						);
 					})
 					.slice(0, 5)}
@@ -90,30 +77,3 @@ function SearchArea() {
 }
 
 export default SearchArea;
-
-// users.map((user) => {
-// 	console.log(user.username);
-// });
-
-// const filteredUsers = users.filter((user) => {
-// 	console.log(
-// 		user.fullname.toLowerCase().indexOf(searchedUser.toLowerCase()) !== -1
-// 	);
-// });
-
-// const DisplayUser = ({ user }) => {
-// 	return (
-// 		<>
-// 			<p>{user.fullname}</p>
-// 			<p>{user.username}</p>
-// 		</>
-// 	);
-// };
-
-// const onChange = (event) => {
-// 	console.log(event.target.value);
-// };
-
-// const filteredUsers = users.filter((user) => {
-// 	return user.fullname.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-// });

@@ -11,6 +11,7 @@ import Home from "./Pages/Home";
 import Error from "./Pages/Error";
 import LikedTweets from "./Pages/LikedTweets";
 import SignIn from "./Pages/SignIn";
+import ViewProfile from "./Pages/ViewProfile";
 
 export const AppContext = createContext();
 
@@ -71,6 +72,11 @@ function App() {
 						<Route path="/profile">
 							<Navbar />
 							<Profile />
+							<SearchArea />
+						</Route>
+						<Route path="/view-profile/:userid">
+							<Navbar />
+							<ViewProfile />
 							<SearchArea />
 						</Route>
 						<Route path="/likedTweets">

@@ -12,18 +12,8 @@ function CreateTweet() {
 	const currentUser = appContext.userState.user.uid;
 	const [message, setMessage] = useState("");
 	const [pic, setPic] = useState(null);
-	// const [userId, setUserId] = useState(null);
 	const [user, setUser] = useState({});
 	let likes = 0;
-
-	// auth.onAuthStateChanged(function (user) {
-	// 	if (user) {
-	// 		console.log(user.uid);
-	// 		setUserId(user.uid);
-	// 	} else {
-	// 		// No user is signed in.
-	// 	}
-	// });
 
 	useEffect(() => {
 		console.log(currentUser);
@@ -47,7 +37,6 @@ function CreateTweet() {
 		const fileRef = storageRef.child(file.name);
 		await fileRef.put(file);
 		const picUrl = await fileRef.getDownloadURL();
-		// console.log(await fileRef.getDownloadURL());
 		setPic(picUrl);
 		console.log(pic);
 	};

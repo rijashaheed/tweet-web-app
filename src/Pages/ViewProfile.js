@@ -8,6 +8,20 @@ import moment from "moment";
 // import querybase from "querybase";
 import UserInfoArea from "../Components/UserInfoArea";
 
+// function UserInfoArea({ username, userhandle, profilePic }) {
+// 	return (
+// 		<div className="profile__user">
+// 			<div className="profile__pictureBox">
+// 				<img className="profile__picture" src={profilePic} alt="profile picture" />
+// 			</div>
+// 			<div className="profile__userInfo">
+// 				<h2 className="profile__userFullname">{username}</h2>
+// 				<span className="profile__username">@{userhandle}</span>
+// 			</div>
+// 		</div>
+// 	);
+// }
+
 function Profile() {
 	const appContext = useContext(AppContext);
 	const [tweets, setTweets] = useState([]);
@@ -16,8 +30,6 @@ function Profile() {
 	var arr = [];
 
 	useEffect(() => {
-		console.log("current user outside useEffect", currentUser);
-
 		db
 			.ref("users")
 			.orderByChild("userId")
@@ -73,32 +85,3 @@ function Profile() {
 }
 
 export default Profile;
-
-// const dbRef = db.ref("users").child();
-// const querybaseRef = querybase.ref(dbRef, [
-// 	"text",
-// 	"image",
-// 	"createdBy",
-// 	"userhandle",
-// 	"createdOn",
-// 	"postedOn",
-// 	"likes",
-// 	"userAvatar",
-// 	"userId",
-// ]);
-
-// const queriedDbRef = querybaseRef.where({
-// 	userId: currentUser,
-// });
-
-// console.log("queriedDbRef", queriedDbRef);
-// queriedDbRef
-// 	.orderByChild("createdOn")
-// 	// .equalTo(currentUser)
-// 	.once("value", (snapshot) => {
-// 		snapshot.forEach((childSnapshot) => {
-// 			console.log(childSnapshot.val());
-// 			setUser(childSnapshot.val());
-// 			console.log(user);
-// 		});
-// 	});
